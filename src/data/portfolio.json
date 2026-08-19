@@ -1,0 +1,30 @@
+[
+  {
+    "id": "port-1",
+    "title": "Presisi Jahitan & Bordir Komputer",
+    "category": "Detail Kualitas",
+    "image": "/images/portfolio/detail.webp",
+    "description": "Hasil rapi dengan ketelitian tinggi pada setiap obras dan stik jahitan."
+  },
+  {
+    "id": "port-2",
+    "title": "Detail Quality",
+    "category": "Detail Kualitas",
+    "image": "/images/portfolio/detail_quality.webp",
+    "description": "Rompi canvas premium dengan bordir logo presisi & kantong serbaguna."
+  },
+  {
+    "id": "port-3",
+    "title": "Presisi dalam jahitan dan bordiran",
+    "category": "Detail Kualitas",
+    "image": "/images/portfolio/presisi.webp",
+    "description": "Kemeja kerja custom bergaya streetwear kontemporer dengan bahan American Drill."
+  },
+  {
+    "id": "port-4",
+    "title": "Detail ID CARD",
+    "category": "Detail ID CARD",
+    "image": "/images/portfolio/detail_idcard.webp",
+    "description": "ID Card PVC KEMOXY tahan lama untuk aktivitas mahasiswa dan organisasi."
+  }
+]

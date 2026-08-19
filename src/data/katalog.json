@@ -1,0 +1,59 @@
+[
+  {
+    "id": "pdh-001",
+    "nama": "PDH BEM FASILKOM",
+    "jenis": "Kemeja",
+    "gambar": "/images/produk/pdh_bem_fasilkom.webp",
+    "bahan": "Nagata Drill"
+  },
+  {
+    "id": "vest-001",
+    "nama": "Vest Program Studi Ilmu Komunikasi",
+    "jenis": "Rompi",
+    "gambar": "/images/produk/vest.webp",
+    "bahan": "Canvas"
+  },
+  {
+    "id": "workshirt-001",
+    "nama": "Syntax Error WorkShirt",
+    "jenis": "Kemeja",
+    "gambar": "/images/produk/pdh_syntax_eror.webp",
+    "bahan": "American Drill"
+  },
+  {
+    "id": "kaos-001",
+    "nama": "Kaos Polo Custom Bordir",
+    "jenis": "Kaos",
+    "gambar": "/images/produk/kaos_seragam.webp",
+    "bahan": "Lacoste CVC"
+  },
+
+  {
+    "id": "pdh-002",
+    "nama": "PDH BEM UMIPA",
+    "jenis": "Kemeja",
+    "gambar": "/images/produk/pdh_bem_umipa.webp",
+    "bahan": "Ripstop Premium"
+  },
+  {
+    "id": "pdh-003",
+    "nama": "PDH PENCAK SILAT",
+    "jenis": "Kemeja",
+    "gambar": "/images/produk/pdh_pencak_silat.webp",
+    "bahan": "Ripstop Drill"
+  },
+  {
+    "id": "pdh-004",
+    "nama": "PDH SINAR MAS",
+    "jenis": "Kemeja",
+    "gambar": "/images/produk/pdh_sinarmas.webp",
+    "bahan": "American Drill"
+  },
+  {
+    "id": "idcard-001",
+    "nama": "ID Card KEMOXY",
+    "jenis": "id card",
+    "gambar": "/images/produk/idcard.webp",
+    "bahan": "PVC"
+  }
+]

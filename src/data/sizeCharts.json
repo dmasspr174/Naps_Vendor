@@ -1,0 +1,54 @@
+{
+  "Kemeja": {
+    "title": "Size Chart Kemeja / PDH / PDL",
+    "description": "Ukuran standar kemeja Nap's Vendor (Toleransi 1-2 cm).",
+    "headers": ["Ukuran", "Lebar Dada (cm)", "Panjang Baju (cm)", "Panjang Lengan (cm)"],
+    "rows": [
+      { "size": "S", "chest": "50", "length": "68", "sleeve": "56" },
+      { "size": "M", "chest": "52", "length": "70", "sleeve": "58" },
+      { "size": "L", "chest": "54", "length": "72", "sleeve": "60" },
+      { "size": "XL", "chest": "56", "length": "74", "sleeve": "62" },
+      { "size": "XXL", "chest": "58", "length": "76", "sleeve": "64" },
+      { "size": "3XL", "chest": "60", "length": "78", "sleeve": "66" }
+    ]
+  },
+  "Rompi": {
+    "title": "Size Chart Rompi / Vest",
+    "description": "Ukuran standar Rompi / Vest Nap's Vendor (Toleransi 1-2 cm).",
+    "headers": ["Ukuran", "Lebar Dada (cm)", "Panjang Rompi (cm)"],
+    "rows": [
+      { "size": "S", "chest": "50", "length": "64" },
+      { "size": "M", "chest": "52", "length": "66" },
+      { "size": "L", "chest": "54", "length": "68" },
+      { "size": "XL", "chest": "56", "length": "70" },
+      { "size": "XXL", "chest": "58", "length": "72" },
+      { "size": "3XL", "chest": "60", "length": "74" }
+    ]
+  },
+  "Jaket": {
+    "title": "Size Chart Jaket / Outerwear",
+    "description": "Ukuran standar Jaket Bomber & Coach Nap's Vendor (Toleransi 1-2 cm).",
+    "headers": ["Ukuran", "Lebar Dada (cm)", "Panjang Jaket (cm)", "Panjang Lengan (cm)"],
+    "rows": [
+      { "size": "S", "chest": "52", "length": "66", "sleeve": "58" },
+      { "size": "M", "chest": "54", "length": "68", "sleeve": "60" },
+      { "size": "L", "chest": "56", "length": "70", "sleeve": "62" },
+      { "size": "XL", "chest": "58", "length": "72", "sleeve": "64" },
+      { "size": "XXL", "chest": "61", "length": "74", "sleeve": "66" },
+      { "size": "3XL", "chest": "64", "length": "76", "sleeve": "68" }
+    ]
+  },
+  "Kaos": {
+    "title": "Size Chart Kaos / Polo Shirt",
+    "description": "Ukuran standar Kaos Combed & Polo Nap's Vendor (Toleransi 1-2 cm).",
+    "headers": ["Ukuran", "Lebar Dada (cm)", "Panjang Kaos (cm)"],
+    "rows": [
+      { "size": "S", "chest": "48", "length": "68" },
+      { "size": "M", "chest": "50", "length": "70" },
+      { "size": "L", "chest": "52", "length": "72" },
+      { "size": "XL", "chest": "54", "length": "74" },
+      { "size": "XXL", "chest": "57", "length": "76" },
+      { "size": "3XL", "chest": "60", "length": "78" }
+    ]
+  }
+}
