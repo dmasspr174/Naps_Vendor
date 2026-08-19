@@ -73,25 +73,25 @@ export function ProductCard({
       </div>
 
       {/* Product Content Details */}
-      <div className="flex flex-1 flex-col justify-between p-5">
-        <div className="space-y-2">
-          <h3 className="text-base sm:text-lg font-bold text-white tracking-tight line-clamp-1 group-hover:text-primary transition-colors">
+      <div className="flex flex-1 flex-col justify-between p-4">
+        <div className="space-y-3">
+          <h3 className="text-sm sm:text-base font-bold text-white tracking-tight line-clamp-2 min-h-[2.5rem] flex items-center group-hover:text-primary transition-colors">
             {product.nama}
           </h3>
 
-          <div className="flex items-center justify-between text-xs text-muted-foreground pt-1 border-t border-zinc-800/60">
-            <span className="flex items-center gap-1">
-              <span className="font-semibold text-zinc-300">Bahan:</span>{" "}
+          <div className="flex items-center justify-between gap-2 text-xs pt-2 border-t border-zinc-800/60">
+            <span className="truncate text-zinc-300 min-w-0">
+              <span className="font-semibold text-zinc-400">Bahan:</span>{" "}
               {product.bahan}
             </span>
-            <span className="text-[11px] text-emerald-400 font-medium px-1.5 py-0.5 rounded bg-emerald-950/40 border border-emerald-800/40">
+            <span className="text-[10px] text-emerald-400 font-medium px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-800/40 shrink-0 whitespace-nowrap">
               MOQ 12 Pcs
             </span>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="mt-5 flex ">
+        <div className="mt-4 flex">
           <Button
             variant="whatsapp"
             size="sm"

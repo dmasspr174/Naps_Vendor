@@ -31,7 +31,7 @@ export function ProofOfWork() {
         </div>
 
         {/* Masonry Responsive Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {portfolioData.map((item) => (
             <div
               key={item.id}
@@ -48,31 +48,18 @@ export function ProofOfWork() {
                   }}
                 />
 
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-
-                {/* Top Badge */}
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 rounded text-[11px] font-bold uppercase tracking-wider bg-zinc-950/80 text-yellow-400 border border-yellow-500/30">
-                    {item.category}
-                  </span>
-                </div>
-
-                {/* Hover Zoom Icon */}
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-8 h-8 rounded-full bg-primary text-zinc-950 flex items-center justify-center shadow-lg">
-                    <ZoomIn className="w-4 h-4" />
+                {/* Sleek Hover Zoom Overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-primary text-zinc-950 flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all shadow-xl">
+                    <ZoomIn className="w-5 h-5" />
                   </div>
                 </div>
 
-                {/* Bottom Title & Description */}
-                <div className="absolute bottom-4 left-4 right-4 space-y-1">
-                  <h3 className="text-base font-bold text-white group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-zinc-400 line-clamp-2">
-                    {item.description}
-                  </p>
+                {/* Top Category Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="px-2.5 py-1 rounded text-[11px] font-bold uppercase tracking-wider bg-zinc-950/85 text-yellow-400 border border-yellow-500/30 backdrop-blur-md shadow-md">
+                    {item.category}
+                  </span>
                 </div>
               </div>
             </div>
