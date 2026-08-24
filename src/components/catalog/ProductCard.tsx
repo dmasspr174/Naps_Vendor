@@ -2,24 +2,11 @@
 
 import * as React from "react";
 import Image from "next/image";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Ruler, Layers, Sparkles } from "lucide-react";
-import { getWhatsAppOrderUrl } from "@/lib/whatsapp";
+import { MessageSquare, Ruler, Layers } from "lucide-react";
+import { ProductItem } from "@/types";
 
-export interface ProductItem {
-  id: string;
-  nama: string;
-  jenis: string;
-  gambar: string;
-  bahan: string;
-}
+export type { ProductItem };
 
 interface ProductCardProps {
   product: ProductItem;
@@ -32,42 +19,42 @@ export function ProductCard({
   onOpenSizeChart,
   onOpenOrderModal,
 }: ProductCardProps) {
-  // Direct WhatsApp URL fallback
-  const directWaUrl = getWhatsAppOrderUrl({
-    namaProduk: product.nama,
-    jenis: product.jenis,
-    bahan: product.bahan,
-  });
+  const [imgSrc, setImgSrc] = React.useState(product.gambar);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-[#121215] transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-xl hover:shadow-yellow-500/5">
+    <article className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-[#121215] transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-xl hover:shadow-yellow-500/5">
       {/* Product Image Container */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-900">
-        <img
-          src={product.gambar}
-          alt={product.nama}
-          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-          onError={(e) => {
-            // Fallback SVG image if image path is not yet present
-            e.currentTarget.src = `https://placehold.co/600x450/18181b/facc15?text=${encodeURIComponent(product.nama)}`;
+        <Image
+          src={imgSrc}
+          alt={`Foto produk konveksi ${product.nama} dengan bahan ${product.bahan}`}
+          fill
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          loading="lazy"
+          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          onError={() => {
+            setImgSrc(
+              `https://placehold.co/600x450/18181b/facc15?text=${encodeURIComponent(product.nama)}`
+            );
           }}
         />
 
         {/* Category Badge */}
         <div className="absolute top-3 left-3 z-10">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-zinc-950/85 backdrop-blur-md text-primary border border-primary/30 shadow-md">
-            <Layers className="w-3 h-3 text-primary" />
+            <Layers className="w-3 h-3 text-primary" aria-hidden="true" />
             {product.jenis}
           </span>
         </div>
 
         {/* Quick Size Chart Floating Trigger */}
         <button
+          type="button"
           onClick={() => onOpenSizeChart(product.jenis)}
-          className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-zinc-950/80 text-zinc-300 hover:text-white hover:bg-zinc-900 border border-zinc-700/80 backdrop-blur-sm transition-all shadow-lg"
-          title="Lihat Size Chart"
+          aria-label={`Lihat tabel panduan ukuran untuk ${product.jenis}`}
+          className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold bg-zinc-950/80 text-zinc-300 hover:text-white hover:bg-zinc-900 border border-zinc-700/80 backdrop-blur-sm transition-all shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
         >
-          <Ruler className="w-3.5 h-3.5 text-primary" />
+          <Ruler className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
           <span>Size Chart</span>
         </button>
       </div>
@@ -96,13 +83,14 @@ export function ProductCard({
             variant="whatsapp"
             size="sm"
             onClick={() => onOpenOrderModal(product)}
+            aria-label={`Pesan produk ${product.nama} via WhatsApp`}
             className="w-full text-xs gap-1.5 font-bold"
           >
-            <MessageSquare className="w-3.5 h-3.5 fill-current" />
+            <MessageSquare className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
             Pesan WA
           </Button>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

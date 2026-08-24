@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   MessageSquare,
   ArrowRight,
-  ShieldCheck,
   Sparkles,
   Award,
   Scissors,
@@ -18,7 +18,8 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#09090b] py-16 md:py-24 border-b border-border/60"
+      aria-label="Hero Section Nap's Vendor Jember"
+      className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#09090b] py-16 md:py-24 border-b border-border/60"
     >
       {/* Background Lighting Glow Effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-yellow-500/10 via-amber-500/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
@@ -30,7 +31,7 @@ export function HeroSection() {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             {/* Pill Tag */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 shadow-sm animate-pulse-subtle">
-              <Sparkles className="w-4 h-4 text-primary" />
+              <Sparkles className="w-4 h-4 text-primary" aria-hidden="true" />
               <span>Spesialis Konveksi Custom Jember</span>
             </div>
 
@@ -52,16 +53,16 @@ export function HeroSection() {
             {/* Key Value Points Badges */}
             <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs sm:text-sm text-zinc-300 font-medium">
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800">
-                <Scissors className="w-4 h-4 text-primary" />
+                <Scissors className="w-4 h-4 text-primary" aria-hidden="true" />
                 <span>Jahitan Rapi & Presisi</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800">
-                <Award className="w-4 h-4 text-primary" />
+                <Award className="w-4 h-4 text-primary" aria-hidden="true" />
                 <span>Bordir Komputer High Detail</span>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800">
-                <CheckCircle className="w-4 h-4 text-primary" />
-                <span>Tanpa Payment Gateway (Direct WA)</span>
+                <CheckCircle className="w-4 h-4 text-primary" aria-hidden="true" />
+                <span>Pemesanan Langsung Admin WA</span>
               </div>
             </div>
 
@@ -71,26 +72,31 @@ export function HeroSection() {
                 href={getGeneralWAUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto"
+                aria-label="Konsultasi atau order via WhatsApp Admin"
+                className="w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
               >
                 <Button
                   variant="whatsapp"
                   size="lg"
                   className="w-full sm:w-auto gap-2 text-base shadow-xl"
                 >
-                  <MessageSquare className="w-5 h-5 fill-current" />
+                  <MessageSquare className="w-5 h-5 fill-current" aria-hidden="true" />
                   Konsultasi / Order WA
                 </Button>
               </a>
 
-              <Link href="#katalog" className="w-full sm:w-auto">
+              <Link
+                href="/catalog"
+                aria-label="Buka halaman katalog produk Nap's Vendor"
+                className="w-full sm:w-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md"
+              >
                 <Button
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto gap-2 text-base border-zinc-700 hover:border-primary text-zinc-200"
                 >
                   Lihat Katalog Produk
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Button>
               </Link>
             </div>
@@ -101,14 +107,14 @@ export function HeroSection() {
                 <span className="font-bold text-white text-base">100%</span>{" "}
                 Custom Order
               </div>
-              <div className="h-4 w-[1px] bg-zinc-800"></div>
+              <div className="h-4 w-[1px] bg-zinc-800" aria-hidden="true"></div>
               <div>
                 <span className="font-bold text-white text-base">
                   Nagata / American
                 </span>{" "}
                 Drill
               </div>
-              <div className="h-4 w-[1px] bg-zinc-800"></div>
+              <div className="h-4 w-[1px] bg-zinc-800" aria-hidden="true"></div>
               <div>
                 <span className="font-bold text-white text-base">Fast</span>{" "}
                 Response WA
@@ -116,28 +122,27 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Visual Showcase Card */}
+          {/* Right Visual Showcase Card (LCP Element) */}
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none rounded-2xl border border-zinc-800 bg-[#121215] p-4 shadow-2xl overflow-hidden group">
               {/* Highlight image showcase */}
               <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800">
-                <img
+                <Image
                   src="/images/produk/kaos_seragam.webp"
-                  alt="PDH BEM Engineering Nap's Vendor"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      "https://placehold.co/600x450/18181b/facc15?text=Nap's+Vendor+Jember+Custom";
-                  }}
+                  alt="Foto produk unggulan seragam kerja bahan Nagata Drill dari Nap's Vendor Jember"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80 pointer-events-none"></div>
 
                 <div className="absolute bottom-3 left-3 right-3 p-3 rounded-lg bg-zinc-950/80 backdrop-blur-md border border-zinc-800 flex items-center justify-between">
                   <div>
-                    <h4 className="text-sm font-bold text-white">
-                      Seragam Kerja
-                    </h4>
+                    <h2 className="text-sm font-bold text-white">
+                      Seragam Kerja Custom
+                    </h2>
                     <p className="text-xs text-zinc-400">
                       Bahan Nagata Drill Original
                     </p>
