@@ -1,67 +1,68 @@
-# 🧶 Nap's Vendor Jember - Web Catalog & Landing Page (PRD & Documentation)
+# 🧶 Nap's Vendor Jember — Web Catalog & Custom Apparel Platform
 
-Selamat datang di repositori resmi **Nap's Vendor Jember**, platform katalog digital dan landing page modern berbasis **Next.js 15** untuk jasa konveksi apparel custom seragam (PDH, Vest Organisasi, Workshirt, Jaket, Kaos, ID Card, dan Merchandise).
-
----
-
-## 🚀 1. Ringkasan Proyek (Product Requirement Document / PRD)
-
-### 📌 Visi & Tujuan
-Platform ini dirancang khusus untuk mempermudah calon pelanggan (instansi, mahasiswa, organisasi BEM/HIMA, komunitas, dan korporat) dalam:
-- Menjelajahi katalog produk apparel seragam custom secara interaktif.
-- Melihat *Proof of Work* (detail kualitas jahitan & bordir presisi).
-- Mengakses panduan *Size Chart* (ukuran S-5XL).
-- Mengajukan konsultasi & pemesanan cepat secara otomatis melalui **WhatsApp Direct Integration**.
+<p align="center">
+  <a href="https://naps-vendor.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-naps--vendor.vercel.app-facc15?style=for-the-badge&logo=vercel&logoColor=black&labelColor=09090b" alt="Live Demo on Vercel" />
+  </a>
+  <img src="https://img.shields.io/badge/Next.js_15-App_Router-black?style=for-the-badge&logo=next.js" alt="Next.js 15" />
+  <img src="https://img.shields.io/badge/React_19-09090b?style=for-the-badge&logo=react" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+</p>
 
 ---
 
-## 🛠️ 2. Tech Stack & Dependensi Utama
+## 🌐 Live Website
 
-| Kategori | Teknologi | Deskripsi |
+Website resmi dan katalog digital Nap's Vendor Jember dapat diakses secara live di:  
+👉 **[https://naps-vendor.vercel.app/](https://naps-vendor.vercel.app/)**
+
+---
+
+## 📖 1. Tentang Proyek
+
+**Nap's Vendor Jember** adalah platform katalog digital dan portofolio modern untuk jasa konveksi apparel seragam kustom (Kemeja PDH/PDL BEM, Vest Organisasi, Workshirt, Jaket, Kaos Polo, ID Card, dan Merchandise) yang berpusat di Jember, Jawa Timur.
+
+Platform ini mengusung konsep **Direct-to-WhatsApp Conversion**, memungkinkan calon pelanggan menjelajahi katalog, memeriksa spesifikasi bahan, memilih ukuran standar (*size chart*), dan melakukan pemesanan instan tanpa alur *checkout* yang rumit.
+
+---
+
+## ✨ 2. Fitur Utama
+
+- ⚡ **Performa Tinggi & Core Web Vitals Teroptimasi**:
+  - Menggunakan `next/image` dengan format modern (AVIF/WebP), *device sizing*, dan prioritas aset LCP.
+  - *Lazy loading* berbasis `next/dynamic` pada komponen modal untuk memperkecil ukuran *initial JavaScript bundle*.
+  - *Throttled animation frame* untuk meminimalkan beban komputasi CPU pada *main-thread*.
+- 💬 **Sistem Pemesanan Cerdas Direct-to-WhatsApp**:
+  - Formulir pemesanan interaktif (`OrderModal`) yang otomatis memformat detail pesanan (*nama produk, jenis, bahan, jumlah estimasi, dan catatan desain custom*) ke WhatsApp Admin.
+- 🛍️ **Katalog Digital Interaktif (`/catalog`)**:
+  - Filter kategori instan (*Semua*, *Kemeja*, *Rompi*, *Kaos*, *ID Card*) dengan *counter badge* dinamis.
+  - Pencarian *real-time* berbasis nama produk, kategori, atau jenis bahan kain.
+- 📐 **Panduan Ukuran Standar (`SizeChartModal` & `/bantuan`)**:
+  - Tabel panduan ukuran presisi (*Lebar Dada, Panjang Baju, Panjang Lengan*) untuk pakaian kemeja, rompi, dan kaos.
+- 📸 **Proof of Work & Galeri Workshop**:
+  - Dokumentasi foto detail jahitan, obras, dan bordir komputer presisi dilengkapi *Interactive Lightbox Modal*.
+- ♿ **Aksesibilitas (a11y - WCAG AA/AAA Compliant)**:
+  - Struktur HTML5 semantik ketat (`<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`).
+  - Dilengkapi atribut `aria-label`, tombol *Skip to Content*, dan indikator fokus keyboard berkontras tinggi (`focus-visible`).
+- 🔍 **SEO & Social Share Ready**:
+  - Implementasi Next.js Metadata API lengkap di seluruh rute.
+  - Pratinjau Open Graph & Twitter Cards berkualitas tinggi saat tautan dibagikan ke WhatsApp atau media sosial.
+  - Dilengkapi generator dinamis `sitemap.xml` dan `robots.txt`.
+
+---
+
+## 🛠️ 3. Tech Stack
+
+| Lapisan | Teknologi | Kegunaan |
 | :--- | :--- | :--- |
-| **Framework Utama** | [Next.js 15 (App Router)](https://nextjs.org/) | React framework modern dengan Server & Client Components |
-| **Bahasa Pemrograman** | [TypeScript 5](https://www.typescriptlang.org/) | Type safety & kenyamanan pengodingan |
-| **UI Library & Engine** | [React 19](https://react.dev/) | React core versi terbaru |
-| **Styling & Design System** | [Tailwind CSS v3](https://tailwindcss.com/) | Utility-first CSS dengan *Dark Aesthetic Theme* |
-| **Komponen UI Primitives** | [@radix-ui/react](https://www.radix-ui.com/) | Radix Tabs, Dialog (Modal), Slot, Accordion |
-| **Icon Set** | [Lucide React](https://lucide.dev/) | Icon SVG modern, ringan, dan konsisten |
-| **Utilities** | `clsx`, `tailwind-merge`, `cva` | Manajemen class dynamic & varian komponen Shadcn UI |
-
----
-
-## ✨ 3. Fitur Utama & Modul
-
-### 📱 A. Hero Section Interaktif
-- Tagline dinamis & value proposition utama (100% Custom Order, Bahan Nagata/American Drill, MOQ 12 Pcs, Pengerjaan 10-14 Hari).
-- *Best Seller Showcase Card* dengan indikator badge visual.
-- Tombol CTA langsung menuju WhatsApp Admin & Scroll otomatis ke Katalog.
-
-### 🛍️ B. Katalog Produk Interaktif (`ProductCatalog` & `ProductCard`)
-- **Fitur Filter Kategori**: Filter tab instan (*Semua*, *Kemeja*, *Rompi*, *Kaos*, *ID Card*) lengkap dengan counter jumlah produk dinamis.
-- **Pencarian Real-time**: Search bar untuk memfilter produk berdasarkan nama, jenis, atau bahan secara serentak.
-- **Kartu Produk Dynamic**: Tampilan thumbnail produk, badge jenis apparel, bahan, MOQ badge, floating button *Size Chart*, dan CTA *"Pesan WA"*.
-- **Responsive Layout**: Tampilan grid 2 kolom di perangkat seluler dan hingga 4 kolom pada layar desktop.
-
-### 🔍 C. Modal Popups (`SizeChartModal` & `OrderModal`)
-- **Size Chart Modal**: Panduan tabel ukuran presisi (Kemeja/PDH, Rompi, Kaos, Jaket) untuk Lebar Dada, Panjang Badan, dan Panjang Lengan.
-- **Order Modal**: Form pemesanan interaktif berbasis pilihan produk dengan input estimasi jumlah (Pcs) & catatan custom/desain.
-
-### 💬 D. Integrasi WhatsApp Otomatis (`src/lib/whatsapp.ts`)
-- Fungsi helper `getWhatsAppOrderUrl()` & `getGeneralWAUrl()`.
-- Secara otomatis memformat pesan WhatsApp lengkap dengan emoji & detail spesifik:
-  - *Nama Produk*
-  - *Jenis Apparel*
-  - *Bahan Kain*
-  - *Jumlah Pesanan (Pcs)*
-  - *Catatan / Desain Custom*
-- Floating WhatsApp Button di sudut kanan bawah layar yang selalu aktif & accessible di semua perangkat.
-
-### 📸 E. Showcase Proof of Work & Galeri (`ProofOfWork`)
-- Menampilkan foto detail hasil produksi asli (kerapian obras, bordir komputer simetris, detail bahan).
-- **Interactive Lightbox Modal**: Memperbesar preview foto ketika diklik dengan dukungan tombol penutup & overlay latar belakang.
-
-### ❓ F. FAQ Accordion (`FAQSection`)
-- Pertanyaan umum seputar Minimum Order Quantity (MOQ 12 pcs), durasi pengerjaan, sampel bahan, garansi jahitan, serta sistem pembayaran/DP.
+| **Framework** | [Next.js 15 (App Router)](https://nextjs.org/) | Hybrid Server & Client Rendering, Metadata API |
+| **Bahasa** | [TypeScript 5](https://www.typescriptlang.org/) | Strict Type Safety & Centralized Interfaces |
+| **UI Library** | [React 19](https://react.dev/) | Core UI Component Architecture |
+| **Styling** | [Tailwind CSS v3](https://tailwindcss.com/) | Dark Aesthetic Design System & Utilities |
+| **Komponen Primitives** | [Radix UI](https://www.radix-ui.com/) / [shadcn/ui](https://ui.shadcn.com/) | Tabs, Dialog Modal, Accordion, Carousel |
+| **Ikon** | [Lucide React](https://lucide.dev/) | Ikon SVG konsisten & ringan |
+| **Deployment** | [Vercel](https://vercel.com/) | Global Edge Hosting & CI/CD Deployment |
 
 ---
 
@@ -70,40 +71,51 @@ Platform ini dirancang khusus untuk mempermudah calon pelanggan (instansi, mahas
 ```text
 Naps/
 ├── public/
-│   └── images/               # Asset gambar produk, portofolio, & logo
+│   └── images/               # Asset gambar produk, portofolio & logo
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx        # Root layout, font Inter, & metadata SEO
-│   │   ├── page.tsx          # Homepage utama menyatukan seluruh section
-│   │   └── globals.css       # Global styles & variabel Tailwind
+│   │   ├── about/            # Halaman /about
+│   │   ├── bantuan/          # Halaman /bantuan (FAQ & Size Chart)
+│   │   ├── catalog/          # Halaman /catalog (Katalog produk)
+│   │   ├── tentang/          # Halaman /tentang (Profil & lokasi workshop)
+│   │   ├── globals.css       # Global styles & variabel Tailwind CSS
+│   │   ├── layout.tsx        # Root layout, Next/Font Inter, Metadata SEO
+│   │   ├── page.tsx          # Homepage utama
+│   │   ├── robots.ts         # Generator dinamis robots.txt
+│   │   └── sitemap.ts        # Generator dinamis sitemap.xml
 │   ├── components/
-│   │   ├── catalog/          # ProductCatalog.tsx & ProductCard.tsx
+│   │   ├── catalog/          # CatalogGridClient.tsx, ProductCard.tsx, ProductCatalog.tsx
 │   │   ├── faq/              # FAQSection.tsx
-│   │   ├── home/             # HeroSection.tsx
+│   │   ├── home/             # HeroSection.tsx, OrderTimelineSection.tsx, SizeChartSection.tsx
 │   │   ├── layout/           # Navbar.tsx, Footer.tsx, FloatingWA.tsx
 │   │   ├── modals/           # OrderModal.tsx & SizeChartModal.tsx
-│   │   ├── portfolio/        # ProofOfWork.tsx
-│   │   └── ui/               # Komponen dasar (Button, Card, Tabs, Dialog)
+│   │   ├── portfolio/        # ProofOfWork.tsx (Lightbox galeri)
+│   │   └── ui/               # Reusable UI (Button, SectionHeader, Carousel, Dialog)
 │   ├── data/
+│   │   ├── faq.json          # Data pertanyaan & jawaban umum
 │   │   ├── katalog.json      # Dataset produk katalog
-│   │   └── portfolio.json    # Dataset portofolio & proof of work
-│   └── lib/
-│       ├── utils.ts          # Utility Class Name merger (clsx + tailwind-merge)
-│       └── whatsapp.ts       # Generator URL WhatsApp API
-├── package.json
-├── tailwind.config.ts
-└── tsconfig.json
+│   │   ├── portfolio.json    # Dataset portofolio & bukti kualitas
+│   │   └── sizeCharts.json   # Dataset dimensi ukuran pakaian
+│   ├── lib/
+│   │   ├── utils.ts          # Helper cn (clsx + tailwind-merge)
+│   │   └── whatsapp.ts       # Generator pesan & URL WhatsApp API
+│   └── types/
+│       └── index.ts          # Centralized TypeScript Interfaces
+├── next.config.ts            # Konfigurasi Next.js (Image Optimization)
+├── package.json              # Daftar dependensi & script proyek
+├── tailwind.config.ts        # Tema warna & animasi Tailwind
+└── tsconfig.json             # Konfigurasi compiler TypeScript
 ```
 
 ---
 
-## ⚡ 5. Cara Menjalankan Proyek (Local Development)
+## ⚡ 5. Cara Menjalankan Proyek Secara Lokal
 
 ### Prasyarat
-- [Node.js](https://nodejs.org/) (Versi 18.x atau lebih baru)
+- [Node.js](https://nodejs.org/) (versi 18.x atau lebih baru)
 - npm / yarn / pnpm
 
-### Langkah Pemasangan & Pengujian
+### Langkah Instalasi
 ```bash
 # 1. Clone repositori
 git clone git@github.com:dmasspr174/Naps_Vendor.git
@@ -112,30 +124,33 @@ cd Naps_Vendor
 # 2. Install dependensi
 npm install
 
-# 3. Jalankan server pengembangan lokal
+# 3. Jalankan server development
 npm run dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) pada browser Anda untuk melihat hasilnya.
+Buka [http://localhost:3000](http://localhost:3000) pada browser Anda.
 
 ### Build untuk Produksi
 ```bash
-# Membuat build bundle produksi teroptimasi
+# Membuat build produksi
 npm run build
 
-# Menjalankan server hasil build produksi
+# Menjalankan server hasil build
 npm run start
 ```
 
 ---
 
-## 🎨 6. Palet Warna & Aesthetics Design System
+## 🎨 6. Design System & Palet Warna
 
-- **Background Principal**: Deep Dark `#09090b` & `#121215` (Zinc Dark Theme)
+- **Background Principal**: Deep Dark `#09090b` & `#121215` (Zinc Dark Palette)
 - **Primary Accent**: Electric Gold / Bright Yellow (`#facc15` / `hsl(47, 95%, 53%)`)
-- **WhatsApp Emerald**: Bright Green `#25D366` / Hover `#20bd5a`
-- **Border & Subtle Glow**: Zinc-800/60 & Subtle Yellow Radial Ambient Glows.
+- **WhatsApp Brand**: Bright Emerald `#25D366` / Hover `#20bd5a`
+- **Border & Surfaces**: `#27272a` (Zinc 800) dengan efek *ambient glow* halus
 
 ---
 
-© 2026 **Nap's Vendor Jember**. All rights reserved.
+## 📄 Lisensi & Hak Cipta
+
+© 2026 **Nap's Vendor Jember**. All rights reserved.  
+Dikembangkan dengan standar kualitas konveksi & performa web terbaik.
