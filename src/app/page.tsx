@@ -5,6 +5,7 @@ import { OrderTimelineSection } from "@/components/home/OrderTimelineSection";
 import { FAQSection } from "@/components/faq/FAQSection";
 import { ProductCatalog } from "@/components/catalog/ProductCatalog";
 import { SizeChartSection } from "@/components/home/SizeChartSection";
+import { getPublicCatalog } from "@/lib/katalog";
 
 export const metadata: Metadata = {
   title: "Nap's Vendor Jember | Konveksi Custom PDH, Jaket, Vest & Kaos",
@@ -47,11 +48,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const products = await getPublicCatalog();
+
   return (
     <>
       <HeroSection />
-      <ProductCatalog />
+      <ProductCatalog initialProducts={products} />
       <ProofOfWork />
       <OrderTimelineSection />
       <SizeChartSection />

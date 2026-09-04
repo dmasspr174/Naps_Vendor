@@ -34,40 +34,43 @@ export function SizeChartModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="max-w-xl bg-zinc-950 border-zinc-800 text-white">
+      <DialogContent className="max-w-xl bg-white border-slate-100 text-slate-900 rounded-2xl shadow-xl p-6">
         <DialogHeader>
-          <DialogTitle className="text-xl flex items-center gap-2">
-            <Ruler className="w-5 h-5 text-primary" aria-hidden="true" />
+          <DialogTitle className="font-heading text-xl font-bold flex items-center gap-2 text-slate-900">
+            <Ruler className="w-5 h-5 text-amber-500" aria-hidden="true" />
             {activeChart.title}
           </DialogTitle>
-          <DialogDescription className="text-zinc-400 text-xs">
+          <DialogDescription className="font-sans text-slate-500 text-xs sm:text-sm font-medium">
             {activeChart.description}
           </DialogDescription>
         </DialogHeader>
 
         {/* Tabular Size Data */}
-        <div className="overflow-x-auto my-2 rounded-lg border border-border/80 bg-zinc-950/60 p-1">
+        <div className="overflow-x-auto my-3 rounded-xl border border-slate-200/80 bg-slate-50 p-1">
           <table className="w-full text-left text-xs sm:text-sm">
             <caption className="sr-only">Tabel ukuran untuk {activeChart.title}</caption>
             <thead>
-              <tr className="border-b border-border bg-zinc-900/80 text-primary font-semibold">
+              <tr className="border-b border-slate-200 bg-slate-100 text-slate-900 font-semibold">
                 {activeChart.headers.map((header, idx) => (
-                  <th key={idx} scope="col" className="px-3 py-2.5">
+                  <th key={idx} scope="col" className="px-3.5 py-2.5">
                     {header}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-border/40 text-zinc-300">
+            <tbody className="divide-y divide-slate-200/60 text-slate-600 font-medium">
               {activeChart.rows.map((row, idx) => (
-                <tr key={idx} className="hover:bg-zinc-900/50 transition-colors">
-                  <td className="px-3 py-2 font-bold text-white bg-zinc-900/30">
+                <tr
+                  key={idx}
+                  className="hover:bg-white transition-colors"
+                >
+                  <td className="px-3.5 py-2.5 font-bold text-slate-900 bg-slate-100/50">
                     {row.size}
                   </td>
-                  <td className="px-3 py-2">{row.chest}</td>
-                  <td className="px-3 py-2">{row.length}</td>
+                  <td className="px-3.5 py-2.5">{row.chest}</td>
+                  <td className="px-3.5 py-2.5">{row.length}</td>
                   {row.sleeve !== undefined && (
-                    <td className="px-3 py-2">{row.sleeve}</td>
+                    <td className="px-3.5 py-2.5">{row.sleeve}</td>
                   )}
                 </tr>
               ))}
@@ -75,11 +78,11 @@ export function SizeChartModal({
           </table>
         </div>
 
-        {/* Measuring Tip */}
-        <div className="flex items-start gap-2.5 p-3 rounded-md bg-yellow-500/10 border border-yellow-500/20 text-xs text-yellow-200/90">
-          <ShieldAlert className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" aria-hidden="true" />
+        {/* Tolerance Notice */}
+        <div className="flex items-center gap-2 rounded-xl bg-amber-50 p-3 text-xs text-amber-900 border border-amber-200/60">
+          <ShieldAlert className="w-4 h-4 shrink-0 text-amber-600" aria-hidden="true" />
           <span>
-            <strong>Tips Pengukuran:</strong> Ukur lebar dada dari ketiak kiri ke ketiak kanan baju yang nyaman dipakai saat dibentangkan mendatar (toleransi ± 1 - 2 cm).
+            Toleransi ukuran penjahitan ± 1 - 2 cm adalah standar wajar produksi konveksi.
           </span>
         </div>
       </DialogContent>

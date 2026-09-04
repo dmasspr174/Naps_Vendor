@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { CatalogGridClient } from "@/components/catalog/CatalogGridClient";
+import { getPublicCatalog } from "@/lib/katalog";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Katalog Produk Konveksi Custom",
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
     title: "Katalog Produk Konveksi Custom | Nap's Vendor Jember",
     description:
       "Lihat daftar lengkap apparel seragam custom berkualitas: Kemeja PDH, Vest Rompi, Workshirt & Kaos dengan jahitan presisi dan bahan pilihan.",
-    url: "https://napsvendor.com/catalog",
+    url: "https://naps-vendor.vercel.app/catalog",
     images: [
       {
         url: "/images/produk/pdh_bem_fasilkom.webp",
@@ -40,6 +43,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CatalogPage() {
-  return <CatalogGridClient />;
+export default async function CatalogPage() {
+  const products = await getPublicCatalog();
+  return <CatalogGridClient initialProducts={products} />;
 }

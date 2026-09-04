@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Tentang Nap's Vendor Jember | Konveksi Custom Terpercaya",
     description:
       "Mitra konveksi pilihan utama di Jember sejak 2022. Melayani pembuatan PDH, Vest, Kaos, dan merchandise custom dengan standar kualitas tinggi.",
-    url: "https://napsvendor.com/tentang",
+    url: "https://naps-vendor.vercel.app/tentang",
     images: [
       {
         url: "/images/portfolio/detail.webp",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 
 export default function TentangPage() {
   return (
-    <div className="py-16 md:py-24 bg-[#09090b] relative overflow-hidden">
+    <div className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
       {/* Background Decorators */}
       <div
         className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
@@ -62,7 +62,10 @@ export default function TentangPage() {
         className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
         aria-hidden="true"
       ></div>
-      <div className="absolute inset-0 opacity-5 pointer-events-none" aria-hidden="true">
+      <div
+        className="absolute inset-0 opacity-5 pointer-events-none"
+        aria-hidden="true"
+      >
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,rgba(251,207,23,0.1)_0%,transparent_50%)]"></div>
       </div>
 
@@ -105,7 +108,10 @@ export default function TentangPage() {
                 aria-label="Buka lokasi Nap's Vendor di aplikasi Google Maps (tab baru)"
                 className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-zinc-950/90 text-white border border-primary/40 hover:bg-primary hover:text-black transition-all shadow-lg backdrop-blur-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                <MapPin className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
+                <MapPin
+                  className="w-3.5 h-3.5 text-primary"
+                  aria-hidden="true"
+                />
                 <span>Buka Google Maps</span>
                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
               </a>
@@ -181,10 +187,13 @@ export default function TentangPage() {
                 {["Kualitas", "Detail", "Presisi", "Kepuasan Pelanggan"].map(
                   (value) => (
                     <div key={value} className="flex items-center gap-2">
-                      <Target className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
+                      <Target
+                        className="w-4 h-4 text-primary flex-shrink-0"
+                        aria-hidden="true"
+                      />
                       <span className="text-muted-foreground">{value}</span>
                     </div>
-                  )
+                  ),
                 )}
               </div>
             </div>
@@ -201,7 +210,10 @@ export default function TentangPage() {
                 <Button variant="whatsapp" className="gap-2 group">
                   <User className="w-4 h-4" aria-hidden="true" />
                   Diskusikan Kebutuhan Anda
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                  <ArrowRight
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    aria-hidden="true"
+                  />
                 </Button>
               </a>
             </div>

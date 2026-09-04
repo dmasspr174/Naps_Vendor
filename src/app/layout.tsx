@@ -1,26 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWA } from "@/components/layout/FloatingWA";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({
+const outfit = Outfit({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
-  preload: true,
+  variable: "--font-outfit",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
-  colorScheme: "dark",
+  themeColor: "#f8fafc",
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://napsvendor.com"),
+  metadataBase: new URL("https://naps-vendor.vercel.app"),
   title: {
     default: "Nap's Vendor Jember | Konveksi Custom PDH, Jaket, Vest & Kaos",
     template: "%s | Nap's Vendor Jember",
@@ -52,7 +58,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://napsvendor.com",
+    url: "https://naps-vendor.vercel.app",
     siteName: "Nap's Vendor Jember",
     title: "Nap's Vendor Jember | Konveksi Custom PDH, Jaket, Vest & Kaos",
     description:
@@ -95,14 +101,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className="dark scroll-smooth">
+    <html lang="id" className={cn("scroll-smooth", "font-sans")}>
       <body
-        className={`${inter.variable} antialiased min-h-screen flex flex-col bg-[#09090b] text-foreground selection:bg-primary selection:text-zinc-950`}
+        className={`${outfit.variable} ${plusJakarta.variable} font-sans antialiased min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-amber-400 selection:text-slate-900`}
       >
         {/* a11y: Skip to main content link for screen readers and keyboard users */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-zinc-950 focus:font-bold focus:rounded-md focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-amber-400 focus:text-slate-900 focus:font-bold focus:rounded-md focus:shadow-md focus:outline-none focus:ring-2 focus:ring-amber-500"
         >
           Lewati ke konten utama
         </a>

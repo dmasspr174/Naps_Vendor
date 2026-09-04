@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Pusat Bantuan & Size Chart | Nap's Vendor Jember",
     description:
       "Informasi lengkap cara pemesanan, panduan ukuran (size chart) kemeja/rompi/kaos, dan pertanyaan umum seputar konveksi.",
-    url: "https://napsvendor.com/bantuan",
+    url: "https://naps-vendor.vercel.app/bantuan",
     images: [
       {
         url: "/images/produk/kaos_seragam.webp",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 
 export default function BantuanPage() {
   return (
-    <div className="pt-12 bg-[#09090b]">
+    <div className="pt-12 bg-slate-50">
       {/* Page Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-8">
         <SectionHeader

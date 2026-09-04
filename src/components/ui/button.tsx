@@ -4,28 +4,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[0.98]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 [&_svg]:shrink-0 active:scale-[0.98]",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow hover:bg-primary-hover font-semibold",
+          "bg-slate-900 text-white shadow-sm hover:bg-slate-800 font-semibold",
         destructive:
           "bg-red-600 text-white shadow-sm hover:bg-red-700 focus-visible:ring-red-500",
         outline:
-          "border border-border bg-transparent hover:bg-secondary hover:text-foreground",
+          "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-slate-900 shadow-sm",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-sm hover:bg-zinc-800",
-        ghost: "hover:bg-secondary hover:text-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-200",
+        ghost: "hover:bg-slate-100 hover:text-slate-900 text-slate-600",
+        link: "text-amber-600 underline-offset-4 hover:underline",
+        amber:
+          "bg-amber-400 text-slate-900 font-bold hover:bg-amber-500 shadow-sm focus-visible:ring-amber-500",
         whatsapp:
-          "bg-[#25D366] text-zinc-950 font-bold hover:bg-[#20bd5a] shadow-lg shadow-emerald-950/30 focus-visible:ring-emerald-500",
+          "bg-emerald-600 text-white font-semibold hover:bg-emerald-700 shadow-sm transition-colors focus-visible:ring-emerald-500",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-12 rounded-md px-8 text-base",
-        icon: "h-10 w-10",
+        default: "h-11 px-5 py-2.5",
+        sm: "h-9 rounded-lg px-3.5 text-xs",
+        lg: "h-12 rounded-xl px-7 text-base font-semibold",
+        icon: "h-10 w-10 rounded-lg",
       },
     },
     defaultVariants: {
