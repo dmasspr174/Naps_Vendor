@@ -8,6 +8,7 @@
   <img src="https://img.shields.io/badge/React_19-09090b?style=for-the-badge&logo=react" alt="React 19" />
   <img src="https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Supabase-Database_&_Auth-3ECF8E?style=for-the-badge&logo=supabase" alt="Supabase" />
 </p>
 
 ---
@@ -23,7 +24,7 @@ Website resmi dan katalog digital Nap's Vendor Jember dapat diakses secara live 
 
 **Nap's Vendor Jember** adalah platform katalog digital dan portofolio modern untuk jasa konveksi apparel seragam kustom (Kemeja PDH/PDL BEM, Vest Organisasi, Workshirt, Jaket, Kaos Polo, ID Card, dan Merchandise) yang berpusat di Jember, Jawa Timur.
 
-Platform ini mengusung konsep **Direct-to-WhatsApp Conversion**, memungkinkan calon pelanggan menjelajahi katalog, memeriksa spesifikasi bahan, memilih ukuran standar (*size chart*), dan melakukan pemesanan instan tanpa alur *checkout* yang rumit.
+Platform ini mengusung konsep **Direct-to-WhatsApp Conversion**, memungkinkan calon pelanggan menjelajahi katalog, memeriksa spesifikasi bahan, memilih ukuran standar (*size chart*), dan melakukan pemesanan instan tanpa alur *checkout* yang rumit. Selain itu, web ini kini dilengkapi dengan **Sistem Manajemen Konten (CMS)** khusus admin untuk mengelola katalog secara langsung.
 
 ---
 
@@ -32,23 +33,22 @@ Platform ini mengusung konsep **Direct-to-WhatsApp Conversion**, memungkinkan ca
 - ⚡ **Performa Tinggi & Core Web Vitals Teroptimasi**:
   - Menggunakan `next/image` dengan format modern (AVIF/WebP), *device sizing*, dan prioritas aset LCP.
   - *Lazy loading* berbasis `next/dynamic` pada komponen modal untuk memperkecil ukuran *initial JavaScript bundle*.
-  - *Throttled animation frame* untuk meminimalkan beban komputasi CPU pada *main-thread*.
 - 💬 **Sistem Pemesanan Cerdas Direct-to-WhatsApp**:
   - Formulir pemesanan interaktif (`OrderModal`) yang otomatis memformat detail pesanan (*nama produk, jenis, bahan, jumlah estimasi, dan catatan desain custom*) ke WhatsApp Admin.
 - 🛍️ **Katalog Digital Interaktif (`/catalog`)**:
-  - Filter kategori instan (*Semua*, *Kemeja*, *Rompi*, *Kaos*, *ID Card*) dengan *counter badge* dinamis.
+  - Filter kategori instan dengan *counter badge* dinamis.
   - Pencarian *real-time* berbasis nama produk, kategori, atau jenis bahan kain.
+  - Manajemen *State* global untuk UI & Katalog menggunakan **Zustand**.
 - 📐 **Panduan Ukuran Standar (`SizeChartModal` & `/bantuan`)**:
-  - Tabel panduan ukuran presisi (*Lebar Dada, Panjang Baju, Panjang Lengan*) untuk pakaian kemeja, rompi, dan kaos.
+  - Tabel panduan ukuran presisi untuk pakaian kemeja, rompi, dan kaos.
+- 🔐 **Admin Dashboard & CMS Terintegrasi (`/admin`)**:
+  - Halaman dashboard terproteksi untuk manajemen penuh data produk (Create, Read, Update, Delete) yang terhubung *real-time* ke **Supabase**.
+  - Sistem Autentikasi Admin yang di-*handle* oleh **Supabase Auth**.
+  - Form interaktif dan modal (`AddProductModal`, `EditProductModal`) mempermudah *update* inventaris produk.
 - 📸 **Proof of Work & Galeri Workshop**:
   - Dokumentasi foto detail jahitan, obras, dan bordir komputer presisi dilengkapi *Interactive Lightbox Modal*.
-- ♿ **Aksesibilitas (a11y - WCAG AA/AAA Compliant)**:
-  - Struktur HTML5 semantik ketat (`<header>`, `<nav>`, `<main>`, `<article>`, `<aside>`, `<footer>`).
-  - Dilengkapi atribut `aria-label`, tombol *Skip to Content*, dan indikator fokus keyboard berkontras tinggi (`focus-visible`).
-- 🔍 **SEO & Social Share Ready**:
-  - Implementasi Next.js Metadata API lengkap di seluruh rute.
-  - Pratinjau Open Graph & Twitter Cards berkualitas tinggi saat tautan dibagikan ke WhatsApp atau media sosial.
-  - Dilengkapi generator dinamis `sitemap.xml` dan `robots.txt`.
+- ♿ **Aksesibilitas (a11y - WCAG AA/AAA Compliant) & SEO**:
+  - HTML5 semantik ketat dengan implementasi Next.js Metadata API di setiap halaman.
 
 ---
 
@@ -56,55 +56,41 @@ Platform ini mengusung konsep **Direct-to-WhatsApp Conversion**, memungkinkan ca
 
 | Lapisan | Teknologi | Kegunaan |
 | :--- | :--- | :--- |
-| **Framework** | [Next.js 15 (App Router)](https://nextjs.org/) | Hybrid Server & Client Rendering, Metadata API |
+| **Framework** | [Next.js 15 (App Router)](https://nextjs.org/) | Hybrid Server & Client Rendering, API Routes & Server Actions |
 | **Bahasa** | [TypeScript 5](https://www.typescriptlang.org/) | Strict Type Safety & Centralized Interfaces |
+| **Database & Auth** | [Supabase](https://supabase.com/) | PostgreSQL Database, Storage, & Authentication System |
+| **State Management**| [Zustand](https://zustand-demo.pmnd.rs/) | Global state management yang ringan dan reaktif |
 | **UI Library** | [React 19](https://react.dev/) | Core UI Component Architecture |
 | **Styling** | [Tailwind CSS v3](https://tailwindcss.com/) | Dark Aesthetic Design System & Utilities |
 | **Komponen Primitives** | [Radix UI](https://www.radix-ui.com/) / [shadcn/ui](https://ui.shadcn.com/) | Tabs, Dialog Modal, Accordion, Carousel |
-| **Ikon** | [Lucide React](https://lucide.dev/) | Ikon SVG konsisten & ringan |
-| **Deployment** | [Vercel](https://vercel.com/) | Global Edge Hosting & CI/CD Deployment |
 
 ---
 
-## 📁 4. Struktur Direktori Proyek
+## 📁 4. Struktur Direktori Utama
 
 ```text
 Naps/
-├── public/
-│   └── images/               # Asset gambar produk, portofolio & logo
+├── public/               # Asset gambar produk statis, ikon & logo
 ├── src/
-│   ├── app/
-│   │   ├── about/            # Halaman /about
-│   │   ├── bantuan/          # Halaman /bantuan (FAQ & Size Chart)
-│   │   ├── catalog/          # Halaman /catalog (Katalog produk)
-│   │   ├── tentang/          # Halaman /tentang (Profil & lokasi workshop)
-│   │   ├── globals.css       # Global styles & variabel Tailwind CSS
-│   │   ├── layout.tsx        # Root layout, Next/Font Inter, Metadata SEO
-│   │   ├── page.tsx          # Homepage utama
-│   │   ├── robots.ts         # Generator dinamis robots.txt
-│   │   └── sitemap.ts        # Generator dinamis sitemap.xml
-│   ├── components/
-│   │   ├── catalog/          # CatalogGridClient.tsx, ProductCard.tsx, ProductCatalog.tsx
-│   │   ├── faq/              # FAQSection.tsx
-│   │   ├── home/             # HeroSection.tsx, OrderTimelineSection.tsx, SizeChartSection.tsx
-│   │   ├── layout/           # Navbar.tsx, Footer.tsx, FloatingWA.tsx
-│   │   ├── modals/           # OrderModal.tsx & SizeChartModal.tsx
-│   │   ├── portfolio/        # ProofOfWork.tsx (Lightbox galeri)
-│   │   └── ui/               # Reusable UI (Button, SectionHeader, Carousel, Dialog)
-│   ├── data/
-│   │   ├── faq.json          # Data pertanyaan & jawaban umum
-│   │   ├── katalog.json      # Dataset produk katalog
-│   │   ├── portfolio.json    # Dataset portofolio & bukti kualitas
-│   │   └── sizeCharts.json   # Dataset dimensi ukuran pakaian
-│   ├── lib/
-│   │   ├── utils.ts          # Helper cn (clsx + tailwind-merge)
-│   │   └── whatsapp.ts       # Generator pesan & URL WhatsApp API
-│   └── types/
-│       └── index.ts          # Centralized TypeScript Interfaces
-├── next.config.ts            # Konfigurasi Next.js (Image Optimization)
-├── package.json              # Daftar dependensi & script proyek
-├── tailwind.config.ts        # Tema warna & animasi Tailwind
-└── tsconfig.json             # Konfigurasi compiler TypeScript
+│   ├── app/              # Routing Aplikasi (Next.js App Router)
+│   │   ├── admin/        # Dashboard Admin Terproteksi (Login & Manajemen Katalog)
+│   │   ├── catalog/      # Halaman Katalog Konsumen
+│   │   ├── bantuan/      # Pusat Bantuan & FAQ
+│   │   └── actions/      # Next.js Server Actions untuk mutasi data backend
+│   ├── components/       # Reusable React Components
+│   │   ├── admin/        # Komponen khusus untuk Dashboard Admin (Modals, Forms)
+│   │   ├── catalog/      # Grid, Kartu Produk, Filter Katalog
+│   │   ├── modals/       # Pop-up Dialog untuk interaksi User
+│   │   ├── ui/           # Komponen UI Dasar (Buttons, Inputs, Dialog)
+│   │   └── skeletons/    # UI Skeleton untuk Loading state
+│   ├── lib/              # Utility Functions & Integrasi Eksternal
+│   │   ├── supabase/     # Konfigurasi SSR/Client & Middleware Supabase
+│   │   └── whatsapp.ts   # Helper untuk memformat URL WhatsApp API
+│   ├── stores/           # Konfigurasi State Management (Zustand: useAdminStore.ts, useCatalogStore.ts, dll)
+│   └── types/            # Definisi Interface & Tipe Data global TypeScript
+├── next.config.ts        # Konfigurasi Build, Env & Image Next.js
+├── tailwind.config.ts    # Tema, Warna & Konfigurasi Desain Tailwind
+└── package.json          # Manajemen Dependensi & Scripts
 ```
 
 ---
@@ -113,7 +99,7 @@ Naps/
 
 ### Prasyarat
 - [Node.js](https://nodejs.org/) (versi 18.x atau lebih baru)
-- npm / yarn / pnpm
+- Project & Kredensial [Supabase](https://supabase.com/) (`NEXT_PUBLIC_SUPABASE_URL` dan `NEXT_PUBLIC_SUPABASE_ANON_KEY`)
 
 ### Langkah Instalasi
 ```bash
@@ -124,20 +110,16 @@ cd Naps_Vendor
 # 2. Install dependensi
 npm install
 
-# 3. Jalankan server development
+# 3. Konfigurasi Environment Variables
+# Buat file .env di root folder dan sesuaikan variabel berikut:
+# NEXT_PUBLIC_SUPABASE_URL="your_supabase_project_url"
+# NEXT_PUBLIC_SUPABASE_ANON_KEY="your_supabase_anon_key"
+
+# 4. Jalankan server development
 npm run dev
 ```
 
 Buka [http://localhost:3000](http://localhost:3000) pada browser Anda.
-
-### Build untuk Produksi
-```bash
-# Membuat build produksi
-npm run build
-
-# Menjalankan server hasil build
-npm run start
-```
 
 ---
 
@@ -153,4 +135,4 @@ npm run start
 ## 📄 Lisensi & Hak Cipta
 
 © 2026 **Nap's Vendor Jember**. All rights reserved.  
-Dikembangkan dengan standar kualitas konveksi & performa web terbaik.
+Dikembangkan dengan standar kualitas konveksi & performa web modern.
